@@ -10,8 +10,7 @@ function resolve(dir) {
 
 module.exports = {
   entry: {
-    main: './src/main.js',
-    vendors: './src/vendors.js'
+    main: './src/main.js'
   },
   output: {
     filename: 'js/[name].[chunkhash:8].js',
@@ -71,7 +70,7 @@ module.exports = {
         filename: 'index.html',
         title: 'fe_grmanage',
         inject: true,
-        chunks: ['main', 'vendors'], // 加载哪些js 等 静态文件
+        chunks: ['main'], // 加载哪些js 等 静态文件
         template: './src/template.html',
         minify: {
             removeComments: true,

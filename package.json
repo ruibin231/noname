@@ -1,18 +1,20 @@
 {
-  "name": "recursive",
+  "name": "opfq",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open",
+    "build": "webpack --progress --hide-modules --config webpack.prod.config.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -26,18 +28,31 @@
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.6.2",
     "vue-loader": "^13.0.5",
+    "vuetable-2": "^1.6.6",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-runtime": "^6.26.0",
+    "bootstrap": "^3.3.7",
+    "datatables.net": "^1.10.16",
+    "datatables.net-bs": "^1.10.16",
+    "datatables.net-responsive": "^2.2.1",
     "element-ui": "^2.3.4",
-    "jsoneditor": "^5.33.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
+    "socket.io": "^2.0.4",
+    "sweetalert": "^2.0.8",
     "vue": "^2.5.2",
+    "vue-codemirror": "^4.0.2",
+    "vue-fullcalendar": "^1.0.9",
+    "vue-i18n": "^8.8.2",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "vuex": "^2.4.1"
+    "vuex": "^2.4.1",
+    "xterm": "^3.2.0"
   }
 }
