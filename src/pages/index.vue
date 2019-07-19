@@ -39,10 +39,6 @@
           </table>
         </div>
         <hr><h4>设定值</h4>
-        <div style="margin-bottom: 10px;">
-            <span>最大次数: </span> <el-input v-model="count" size="mini" width="50px"></el-input> <el-button type="primary" size="mini">计算</el-button>
-        </div>
-        
         <table>
           <thead>
             <tr>
@@ -55,14 +51,18 @@
           </thead>
           <tbody>
             <tr>
-              <td><input v-model="settingData.heat" /></td>
-              <td><input v-model="settingData.sulfur" /></td>
-              <td><input v-model="settingData.water" /></td>
-              <td><input v-model="settingData.volatilize" /></td>
-              <td><input v-model="settingData.price" /></td>
+              <td><input v-model="settingData.heat.start" class="small-input" />-<input v-model="settingData.heat.end"  class="small-input"/></td>
+              <td><input v-model="settingData.sulfur.start" class="small-input" />-<input v-model="settingData.sulfur.end" class="small-input" /></td>
+              <td><input v-model="settingData.water.start" class="small-input" />-<input v-model="settingData.water.end" class="small-input" /></td>
+              <td><input v-model="settingData.volatilize.start" class="small-input" />-<input v-model="settingData.volatilize.end" class="small-input" /></td>
+              <td><input v-model="settingData.price.start" class="small-input" />-<input v-model="settingData.price.end" class="small-input" /></td>
             </tr>
           </tbody>
         </table>
+        <div style="margin: 10px 10px;">
+            <span>最大数量: </span> <el-input v-model="count" size="mini" width="50px"></el-input> <el-button type="primary" size="mini">计算</el-button>
+        </div>
+        <hr><h4>结果</h4>
       </el-main>
     </el-container>
 </template>
@@ -82,12 +82,23 @@
                   {'zone': 'A区8号', 'heat': 3500, 'sulfur': 1, 'water': 6, 'volatilize': 14, 'price': 234}
                 ],
                 result: [],
-                settingData: {heat: 0, sulfur: 0, water: 0, volatilize: 0, price: 0},
-                bastRest: {heat: 0, sulfur: 0, water: 0, volatilize: 0, price: 0}
+                settingData: {heat: {start: 0, end: 0}, sulfur: {start: 0, end: 0}, water: {start: 0, end: 0}, volatilize: {start: 0, end: 0}, price: {start: 0, end: 0}},
+                formatData: {},
+                zoneCount: {},
             }
         },
-        created() {},
+        created() {
+        },
         methods: {
+            // 分配比例 zoneCount: {zone1: 1, zone2: 1, ...}
+            // 用于计算的数据 formatData: {zone1: {zone: xx, heat: xx, ...}...}
+            formatSource() {
+                for(let index in this.configData) {
+                    const data = this.configData[index]
+                    this.formatData[data.zone] = Object.assign({}, data)
+                    this.zoneCount[data.zone] = 1
+                }
+            },
             recursion(data, expect) {
                 rCount = 0
             },
@@ -115,5 +126,8 @@
   }
   .el-input {
     width: 80px;
+  }
+  .small-input {
+    width: 70px;
   }
 </style>>
