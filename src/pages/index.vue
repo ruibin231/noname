@@ -60,7 +60,7 @@
           </tbody>
         </table>
         <div style="margin: 10px 10px;">
-            <span>最大数量: </span> <el-input v-model="count" size="mini" width="50px"></el-input> <el-button type="primary" size="mini">计算</el-button>
+            <span>最大数量: </span> <el-input v-model="count" size="mini" width="50px"></el-input> <el-button type="primary" size="mini"@click="start">计算</el-button>
         </div>
         <hr><h4>结果</h4>
       </el-main>
@@ -97,6 +97,12 @@
                     const data = this.configData[index]
                     this.formatData[data.zone] = Object.assign({}, data)
                     this.zoneCount[data.zone] = 1
+                }
+            },
+            start() {
+                this.formatSource()
+                for(let z in this.zoneCount) {
+                    console.log(z)
                 }
             },
             recursion(data, expect) {
